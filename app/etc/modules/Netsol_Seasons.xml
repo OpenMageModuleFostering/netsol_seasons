@@ -4,7 +4,7 @@
     <Netsol_Seasons>
       <active>true</active>
       <codePool>community</codePool>
-      <version>0.1.1</version>
+      <version>0.1.2</version>
       <comment>Before disable/uninstall this module also delete attribute seasons otherwise the website will display error.</comment>
     </Netsol_Seasons>
   </modules>

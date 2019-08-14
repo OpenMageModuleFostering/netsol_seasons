@@ -88,15 +88,15 @@
 							<validate>required-entry validate-digits-range digits-range-1-20</validate>
 						</max_product_count>
 
-						<!--<season_check_ip translate="label">
+						<season_check_ip translate="label">
 							<label>IP Address</label>
 							<frontend_type>text</frontend_type>
 							<sort_order>16</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-							<comment>Add default IP addresses which you want to check  season with respect to default ip and recommend product based on default ip address season.</comment>
-						</season_check_ip>-->
+							<comment>To test on localhost please add IP addresses which you want to check season , recommend product based on dummy ip address. Please empty the field on production.</comment>
+						</season_check_ip>
 						
 						<season_slider_enabled translate="label">
 							<label>Enable season slider </label>
@@ -108,7 +108,28 @@
 							<show_in_store>1</show_in_store>
 							<comment>Disable existing slider of theme and site to display season slider.</comment>
 						</season_slider_enabled>
-	
+						
+						<download_csv translate="label">
+                                <label>Download Sample Csv</label>
+                                <frontend_type>button</frontend_type>
+                                <frontend_model>seasons/config_backend_downloadcsv</frontend_model>
+                                <sort_order>18</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                        </download_csv>
+                        
+						<upload translate="label">
+							<label>Csv Upload </label>
+							<comment><![CDATA[This file gives you user ip address corresponding its latitude.]]></comment>
+							<frontend_type>file</frontend_type>
+							<backend_model>seasons/config_backend_csv</backend_model>
+							<upload_dir>var/netsol/seasons/csv/uploads</upload_dir>
+							<sort_order>19</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</upload>
 					</fields>
 				</pa_seasons>
 			</groups>

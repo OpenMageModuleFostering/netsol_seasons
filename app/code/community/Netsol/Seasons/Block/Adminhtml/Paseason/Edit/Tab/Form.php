@@ -39,13 +39,13 @@ class Netsol_Seasons_Block_Adminhtml_Paseason_Edit_Tab_Form extends Mage_Adminht
 						'required' => true,
 					));
 					
-					//$dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
+					$dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
 					$fieldset->addField('start_date', 'date', array(
 						'label'    => Mage::helper('seasons')->__('Start Date'),
 						'title'    => Mage::helper('seasons')->__('Start Date'),
 						'name'     => 'start_date',
 						'image'    => $this->getSkinUrl('images/grid-cal.gif'),
-						'format'   => 'Y-MM-dd',
+						'format'   => 'yyyy-MM-dd',
 						'required' => true,
 					));
 					$fieldset->addField('end_date', 'date', array(
@@ -53,7 +53,7 @@ class Netsol_Seasons_Block_Adminhtml_Paseason_Edit_Tab_Form extends Mage_Adminht
 						'title'    => Mage::helper('seasons')->__('End Date'),
 						'name'     => 'end_date',
 						'image'    => $this->getSkinUrl('images/grid-cal.gif'),
-						'format'   => 'Y-MM-dd',
+						'format'   => 'yyyy-MM-dd',
 						'required' => true,
 					));
 			

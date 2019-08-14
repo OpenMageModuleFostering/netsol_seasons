@@ -59,6 +59,12 @@ class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
     const XML_PATH_SEASON_SLIDER_ENABLED = 'pa_seasonssetting/pa_seasons/season_slider_enabled';
     
+     /**
+     * To get csv file path
+	 * @var  string 
+	 */
+    const XML_PATH_FILE_CSV_PATH = 'pa_seasonssetting/pa_seasons/upload';
+    
    	 /**
 	 * enable/disable 
 	 *
@@ -101,12 +107,12 @@ class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
      */
     protected $seasonSliderEnabled = null;
 
-	 /**
-     * Search term count
+	/**
+     * csv file path
      *
      * @var  number 
      */
-    protected $searchTermCount = null;
+    protected $csvFilePath = null;
     
     public function __construct()
     {
@@ -116,6 +122,7 @@ class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
 			$this->heading = $this->_getHeading();
 			$this->seasonDefaultIpaddress = $this->_getDefaultIpaddress();
 			$this->seasonSliderEnabled = $this->_getSeasonSliderEnabled();
+			$this->csvFilePath = $this->_getStoreFilecsvConfig();
          }
     }
 
@@ -186,6 +193,17 @@ class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
         return $this->seasonSliderEnabled;
     }
  
+ 	/**
+     * @description: get csv file path
+     * @param		no
+     * @return		csv file path $filepath
+     */
+    public function getStoreFilecsvConfig($uploadDownload)
+    {
+		$filepath = Mage::getBaseDir('base').'/var/netsol/seasons/csv/uploads/'.$this->csvFilePath;
+        return $filepath;
+    }
+
     /**
      * @description retrieve options
      *
@@ -222,7 +240,10 @@ class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::getStoreConfig($xmlPath, Mage::app()->getStore()->getId());
     }
-    
+    protected function _getStoreFilecsvConfig()
+    {
+        return Mage::getStoreConfig(self::XML_PATH_FILE_CSV_PATH);
+    }
 
 }
 	 

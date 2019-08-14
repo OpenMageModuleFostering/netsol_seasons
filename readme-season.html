@@ -29,7 +29,7 @@
 
 
             <h2 id="description">Description</h2>
-            <p><strong>Version 1.0.0</strong></p>
+            <p><strong>Version 0.1.2</strong></p>
 
 			<p>The present day eCommerce customers are highly accustomed to features like product recommendations and personalization.
 			 A website that hosts features that help them save their browsing efforts and time are the most desirable.<br/>
@@ -81,13 +81,17 @@
 			<h3>Enable embeded jquery</h3>
 			<p>If Jquery is already added on your wesbite then set this option as "No"</p>
 			
+			<h3>IP Address</h3>
+			<p>This field is completely for testing, if the extension is installed on local server in that case there might be the chances we will not get the IP and latitide of the user location. For this please add any dummy IP of some locations to check if seasons are working correctly.</p>
+			<p><strong>PLEASE KEEP THIS FIELD BLANK IF YOU ARE NOT CHECKING ON LOCALHOST. OTHERWISE ONLY THE SEASON OF ADDED IP WILL BE CONSIDERED EVERYTIME</strong></p>
+			
 			<h3>Enable season slider</h3>
 			<p>You want to show banners on homepage as per the seasons. </p>
 			
 			
 		<h2 id="catalog">Catalog Settings</h2>
 
-        <h3>Setting expiration date product wise</h3>
+        <h3>Setting seasons product wise</h3>
         <p>Visit <strong>Catalog->Manage Products->Personalytics</strong> in the Magento admin panel to see how you can assign seasons to different products. You can assign multiple seasons to products </p>
 		<p><img src="skin/frontend/base/default/images/netsol/seasons/predictiveanalytics/season1.jpg" style="max-width:1400px; "/></p>
 		
@@ -106,7 +110,16 @@
 
         <h3>When I try to access your extension's configuration at System->Configuration->Personalytics Settings, I get a 404 error</h3>
         <p>Logout &amp; Login back into the Magento admin panel.</p>
-
+		<h3>When I try upload package or install package from magento connect manager >> File upload problem error</h3>
+		<p>Please increase php_value upload_max_filesize to 4MB and php_value post_max_size 4MB in .htaccess file.</p>
+		<h3>I am not able to see any seasonal products, instead of assigning from backend</h3>
+		<p>We have used http://freegeoip.net api to get the seasons from particular IP[called http://freegeoip.net/json/$ip, where $ip is the IP of user who is browsing the website]</p>
+		<p>There might be the chances that this API gives no response in that case we have given one CSV file in the location var/netsol/seasons/csv/downloads/</p>
+		<p>In that CSV please add the IP ranges and latitudes of your country/location, IP should be in decimal format, so that if API doesn't work then location will be read from CSV file. You can add the data from http://download.db-ip.com/free/dbip-city-2016-10.csv.gz</p>
+		
+		<p>If you want any paid API to be integrated you can contact us at marketing@netsolutionsindia.com</p>
+		<h3>Note:If you are uploading csv please make sure that you have to download the sameple csv file and then make the changes in that file 
+		only and then upload the same file. Please don't upload the new file</h3>
     </div>
 
     <div id="footer">

@@ -22,7 +22,7 @@
 <config>
   <modules>
     <Netsol_Seasons>
-      <version>0.1.1</version>
+      <version>0.1.2</version>
     </Netsol_Seasons>
   </modules>
   <frontend>

@@ -92,9 +92,8 @@ class Netsol_Seasons_Adminhtml_PaseasonController extends Mage_Adminhtml_Control
 		{
 
 			$post_data=$this->getRequest()->getPost();
-			$year = date('Y');
-			$start_date = $year.'-'.$post_data['start_date'];
-			$end_date = $year.'-'.$post_data['end_date'];
+			$start_date = $post_data['start_date'];
+			$end_date = $post_data['end_date'];
 
 			if ($post_data) {
 
