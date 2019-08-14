@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Netsol_Seasons",
+    "type": "magento-module",
+    "license": "OSL",
+    "homepage": "",
+    "description": "Recommend products on the basis of local climate and seasons.",
+    "authors": [
+    {
+        "name": "Netsolutions",
+        "email": "marketing@netsolutionsindia.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

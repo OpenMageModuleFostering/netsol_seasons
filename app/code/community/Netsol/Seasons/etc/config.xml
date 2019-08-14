@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Netsol
+ * @package     Netsol_Seasons
+ * @copyright   Copyright (c) 2015 Netsolutions India (http://www.netsolutions.in)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+  <modules>
+    <Netsol_Seasons>
+      <version>0.1.0</version>
+    </Netsol_Seasons>
+  </modules>
+  <frontend>
+    <routers>
+      <seasons>
+        <use>standard</use>
+          <args>
+            <module>Netsol_Seasons</module>
+            <frontName>seasons</frontName>
+          </args>
+      </seasons>
+    </routers>
+	<layout>
+	  <updates>
+		<seasons>
+		  <file>seasons.xml</file>
+		</seasons>
+	  </updates>
+	</layout>
+	<events>
+		<controller_action_layout_generate_blocks_after>
+			<observers>
+				<unset_seasonslayout_observer>
+					<type>singleton</type>
+					<class>Netsol_Seasons_Model_Observer</class>
+					<method>unsetSeasonslayoutBlocks</method>
+				</unset_seasonslayout_observer>
+			</observers>
+		</controller_action_layout_generate_blocks_after>
+	</events>	
+  </frontend>
+  <global>
+	  
+	<resources>
+		<netsol_seasons_setup>
+			<setup>
+				<module>Netsol_Seasons</module>
+				<class>Mage_Eav_Model_Entity_Setup</class>
+			</setup>
+			<connection>
+				<use>core_setup</use>
+			</connection>
+		</netsol_seasons_setup>
+		<netsol_seasons_write>
+			<connection>
+				<use>core_write</use>
+			</connection>
+		</netsol_seasons_write>
+		<netsol_seasons_read>
+			<connection>
+				<use>core_read</use>
+			</connection>
+		</netsol_seasons_read>
+	</resources>
+	
+	<models>
+		<seasons>
+			<class>Netsol_Seasons_Model</class>
+			<resourceModel>seasons_mysql4</resourceModel>
+		</seasons>
+		<seasons_mysql4>
+			 <class>Netsol_Seasons_Model_Mysql4</class>
+			 <entities>
+				 <paseason>
+					 <table>netsol_pa_season</table>
+				 </paseason>
+				 <seasonbanner>
+					<table>netsol_pa_season_banner</table>
+				 </seasonbanner>
+			  </entities>
+		</seasons_mysql4>
+	</models>
+	
+    <helpers>
+      <seasons>
+        <class>Netsol_Seasons_Helper</class>
+      </seasons>
+    </helpers>
+	<blocks>
+	  <seasons>
+		<class>Netsol_Seasons_Block</class>
+	  </seasons>
+	</blocks>
+  </global>
+  
+  <admin>
+	<routers>
+	  <seasons>
+	    <use>admin</use>
+		<args>
+		  <module>Netsol_Seasons</module>
+		  <frontName>admin_seasons</frontName>
+		</args>
+	  </seasons>
+	</routers>
+  </admin>
+  <adminhtml>
+	  
+	 <menu>
+	  <seasons module="seasons">
+		<title>Personalytics</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <paseason module="seasons">
+			<title>Seasons</title>
+			<sort_order>0</sort_order>
+			<action>admin_seasons/adminhtml_paseason</action>
+		  </paseason>
+		  <seasonbanner module="seasons">
+		    <title>Manage Seasonbanner</title>
+			<sort_order>1</sort_order>
+			<action>admin_seasons/adminhtml_seasonbanner</action>
+		  </seasonbanner>
+		</children>
+	  </seasons>
+	</menu>
+	
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<seasons translate="title" module="seasons">
+			  <title>Personalytics</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+				  <predictiveanalyticsbackend translate="title">
+					<title>Seasons</title>
+				  </predictiveanalyticsbackend>
+				  <seasonbanner translate="title">
+					<title>Manage Seasonbanner</title>
+					<sort_order>1</sort_order>
+				  </seasonbanner>
+			  </children>
+			</seasons>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	
+	<layout>
+	  <updates>
+		<seasons>
+		  <file>seasons.xml</file>
+		</seasons>
+	  </updates>
+	</layout>
+	
+	<events>
+		<controller_action_layout_load_before>
+			<observers>
+				<seasons_adminhtml_custom_layout>
+					<class>Netsol_Seasons_Model_Observer</class>
+					<method>addAdminCustomLayoutHandle</method>
+				</seasons_adminhtml_custom_layout>
+			</observers>
+		</controller_action_layout_load_before>
+	</events>
+  </adminhtml>
+  
+  	<default>
+		<pa_seasonssetting>
+			<pa_seasons>
+				<max_product_count>15</max_product_count>
+				<pa_seasons_heading>You may also be interested in the following recommended product(s)</pa_seasons_heading>
+			</pa_seasons>
+		</pa_seasonssetting>
+	</default>
+</config> 
