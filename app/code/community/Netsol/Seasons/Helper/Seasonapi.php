@@ -21,12 +21,11 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 {
 
 	 /**
-	 * @description: Resource iterator technique allows 
-	 * you to get each item one by one through the function callback
-	 *  using the walk function in core/resource_iterator
+	 * @description: Get Latitude of user fromits ip address 
+	 * using freegeoip api
 	 * 
-	 * @param 
-	 * @return  
+	 * @param $ip
+	 * @return  $latitude
 	 * */
 	 protected function getLatAddress($ip)
 	 {
@@ -56,19 +55,16 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 		catch(Exception $e) {
 			echo $e->getMessage(); die;
 		}
-		
-		//echo $latitude; die;
-		
+
 	}
 	
 
 	 /**
-	 * @description: Resource iterator technique allows 
-	 * you to get each item one by one through the function callback
-	 *  using the walk function in core/resource_iterator
+	 * @description: Based on User Ip , Latitiude is get from api 
+	 * Products is display on frontend
 	 * 
-	 * @param 
-	 * @return  
+	 * @param $ip
+	 * @return  $seasonProductIds
 	 * */
 	 public function getProductOfSeason($ip)
 	 {
@@ -79,7 +75,7 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 			$noOfDisplayProduct = $helper::getMaxProductCount(); 
 			$guestMaxProductCount = $helper:: getMaxProductCount();
 			$websiteId = Mage::app()->getWebsite()->getId();
-			$currentDate = Mage::getModel('core/date')->date('m-d'); 
+			$currentDate = Mage::getModel('core/date')->date('Y-m-d'); 
 			$paSeasonModel = Mage::getModel('seasons/paseason')->getCollection();
 			$paSeasonModel->addFieldToSelect('season');
 
@@ -97,7 +93,7 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 				
 				$hemisphereOfUser = 'Northern';		
 				$paSeasonModel->addFieldToFilter('hemisphere',array('eq'=>$hemisphereOfUser));
-				$paSeasonModel->getSelect()->where("(DATE_FORMAT(`start_date`,'%m-%d') <= '$currentDate') AND (((((DATE_FORMAT(`end_date`,'%m-%d') >= '$currentDate') OR (`end_date` IS NULL))) OR (`end_date` = 'left')))");
+				$paSeasonModel->getSelect()->where("'$currentDate' BETWEEN `start_date` AND `end_date`");
 				$season = $paSeasonModel->getData();
 				if($season[0]['season'] != '') {
 					$_productCollection = Mage::getResourceModel('catalog/product_collection')
@@ -128,7 +124,7 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 				
 				$hemisphereOfUser = 'Southern'; 
 				$paSeasonModel->addFieldToFilter('hemisphere',array('eq'=>$hemisphereOfUser));
-				$paSeasonModel->getSelect()->where("(DATE_FORMAT(`start_date`,'%m-%d') <= '$currentDate') AND (((((DATE_FORMAT(`end_date`,'%m-%d') >= '$currentDate') OR (`end_date` IS NULL))) OR (`end_date` = 'left')))");
+				$paSeasonModel->getSelect()->where("'$currentDate' BETWEEN `start_date` AND `end_date`");
 				$season = $paSeasonModel->getData();
 				if($season[0]['season'] != '') {
 					$_productCollection = Mage::getResourceModel('catalog/product_collection')
@@ -155,7 +151,7 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 			}elseif($latitudeOfUser < 0 && $latitudeOfUser > -23.5) {
 				$hemisphereOfUser = 'Equator-Capricorn';
 				$paSeasonModel->addFieldToFilter('hemisphere',array('eq'=>$hemisphereOfUser));
-				$paSeasonModel->getSelect()->where("(DATE_FORMAT(`start_date`,'%m-%d') <= '$currentDate') AND (((((DATE_FORMAT(`end_date`,'%m-%d') >= '$currentDate') OR (`end_date` IS NULL))) OR (`end_date` = 'left')))");
+				$paSeasonModel->getSelect()->where("$currentDate BETWEEN `start_date` AND `end_date`");
 				$season = $paSeasonModel->getData();
 				if($season[0]['season'] != '') {
 					$_productCollection = Mage::getResourceModel('catalog/product_collection')
@@ -183,7 +179,7 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 			}elseif($latitudeOfUser < 23.5 && $latitudeOfUser > 0) {
 				$hemisphereOfUser = 'Equator-Cancer';
 				$paSeasonModel->addFieldToFilter('hemisphere',array('eq'=>$hemisphereOfUser));
-				$paSeasonModel->getSelect()->where("(DATE_FORMAT(`start_date`,'%m-%d') <= '$currentDate') AND (((((DATE_FORMAT(`end_date`,'%m-%d') >= '$currentDate') OR (`end_date` IS NULL))) OR (`end_date` = 'left')))");
+				$paSeasonModel->getSelect()->where("'$currentDate' BETWEEN `start_date` AND `end_date`");
 				$season = $paSeasonModel->getData();
 				if($season[0]['season'] != '') {
 					$_productCollection = Mage::getResourceModel('catalog/product_collection')
@@ -214,7 +210,6 @@ class Netsol_Seasons_Helper_Seasonapi extends Netsol_Seasons_Helper_Data
 		} catch(Exception $e) {
 			echo $e->getMessage(); die;
 		}
-		
-	
+
 	 }
 }

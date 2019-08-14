@@ -14,7 +14,7 @@
  *
  * @category    Netsol
  * @package     Netsol_Seasons
- * @copyright   Copyright (c) 2015 Netsolutions India (http://www.netsolutions.in)
+ * @copyright   Copyright (c) 2016 Netsolutions India (http://www.netsolutions.in)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -51,8 +51,13 @@ class Netsol_Seasons_Block_Adminhtml_Paseason extends Mage_Adminhtml_Block_Widge
 				'label'=>'Southern',
 			 ),
 			 array(
-				'value'=>'Equator',
-				'label'=>'Equator',
+				'value'=>'Equator-Cancer',
+				'label'=>'Equator-Cancer',
+			
+			 ),
+			 array(
+				'value'=>'Equator-Capricorn',
+				'label'=>'Equator-Capricorn',
 			
 			 )
 		);

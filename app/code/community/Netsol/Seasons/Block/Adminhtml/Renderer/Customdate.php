@@ -13,7 +13,7 @@
  * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * @category    Netsol
- * @package     Netsol_Predictiveanalytics
+ * @package     Netsol_Seasons
  * @copyright   Copyright (c) 2016 Netsolutions India (http://www.netsolutions.in)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -26,7 +26,7 @@ class Netsol_Seasons_Block_Adminhtml_Renderer_Customdate extends Mage_Adminhtml_
 	public function render(Varien_Object $row)
 	{
 		$customDate =  $row->getData($this->getColumn()->getIndex());
-		$date = date("M ,d", strtotime($customDate)); 
+		$date = date("Y M ,d", strtotime($customDate)); 
 	
 		return $date;
 	}

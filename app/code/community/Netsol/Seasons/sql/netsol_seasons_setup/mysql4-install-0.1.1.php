@@ -59,19 +59,20 @@ $setup->removeAttribute('catalog_product', 'seasons');
 	"); 
 	
  $year = date('Y');
+ $yearNxt = date('Y', strtotime('+1 years'));
  $installer->run("
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Summer','$year-06-01','$year-08-31');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Winter','$year-12-01','$year-02-28');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Autumn','$year-09-01','$year-11-30');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Spring','$year-03-01','$year-05-31');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Summer','$year-12-01','$year-02-28');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Winter','$year-06-01','$year-08-31');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Autumn','$year-03-01','$year-05-31');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Spring','$year-09-01','$year-11-30');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Cancer','Wet','$year-10-01','$year-05-31');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Cancer','Dry','$year-06-01','$year-09-30');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Capricorn','Dry','$year-10-01','$year-05-31');
-	insert into netsol_pa_season (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Capricorn','Wet','$year-06-01','$year-09-30');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Summer','$year-06-01','$year-08-31');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Winter','$year-12-01','$yearNxt-02-28');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Autumn','$year-09-01','$year-11-30');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Northern','Spring','$year-03-01','$year-05-31');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Summer','$year-12-01','$yearNxt-02-28');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Winter','$year-06-01','$year-08-31');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Autumn','$year-03-01','$year-05-31');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Southern','Spring','$year-09-01','$yearNxt-11-30');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Cancer','Wet','$year-10-01','$yearNxt-05-31');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Cancer','Dry','$year-06-01','$year-09-30');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Capricorn','Dry','$year-10-01','$yearNxt-05-31');
+	insert into {$this->getTable('netsol_pa_season')} (`hemisphere`,`season`,`start_date`,`end_date`) values('Equator-Capricorn','Wet','$year-06-01','$year-09-30');
 "); 
 
  $installer->run("

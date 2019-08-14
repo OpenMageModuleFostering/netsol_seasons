@@ -53,10 +53,8 @@ class Netsol_Seasons_Block_Paseasons extends Mage_Catalog_Block_Product_Abstract
     
     /**
      * @description Retrieve collection based on setting
-     *
-     * @param		
-     * @param		
-     * @return	productCollection
+     *	
+     * @return	$seasonsPids
      */
     public function predictiveSeasonBannerBlock()
     {
@@ -68,9 +66,7 @@ class Netsol_Seasons_Block_Paseasons extends Mage_Catalog_Block_Product_Abstract
 	 /**
      * @description Retrieve collection based on setting
      *
-     * @param		
-     * @param		
-     * @return	productCollection
+     * @return	$seasonsPids
      */
     public function seasonsBlock()
     {
@@ -85,7 +81,7 @@ class Netsol_Seasons_Block_Paseasons extends Mage_Catalog_Block_Product_Abstract
 	 * 
 	 * 
 	 * @param Season api
-	 * @return  $productIds
+	 * @return  $seasonsPids
 	 * */
 	 protected function _getSeasonProducts()
 	 {
@@ -105,8 +101,7 @@ class Netsol_Seasons_Block_Paseasons extends Mage_Catalog_Block_Product_Abstract
 	 * @description: Get all banners
 	 * according to seasons
 	 * 
-	 * @param order item
-	 * @return  $productCollection
+	 * @return  $bannerCollection
 	 * */
 	 protected function _predictiveSeasonBannerBlock()
 	 {

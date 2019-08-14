@@ -45,7 +45,7 @@ class Netsol_Seasons_Block_Adminhtml_Paseason_Edit_Tab_Form extends Mage_Adminht
 						'title'    => Mage::helper('seasons')->__('Start Date'),
 						'name'     => 'start_date',
 						'image'    => $this->getSkinUrl('images/grid-cal.gif'),
-						'format'   => 'MM-d',
+						'format'   => 'Y-MM-dd',
 						'required' => true,
 					));
 					$fieldset->addField('end_date', 'date', array(
@@ -53,7 +53,7 @@ class Netsol_Seasons_Block_Adminhtml_Paseason_Edit_Tab_Form extends Mage_Adminht
 						'title'    => Mage::helper('seasons')->__('End Date'),
 						'name'     => 'end_date',
 						'image'    => $this->getSkinUrl('images/grid-cal.gif'),
-						'format'   => 'MM-d',
+						'format'   => 'Y-MM-dd',
 						'required' => true,
 					));
 			

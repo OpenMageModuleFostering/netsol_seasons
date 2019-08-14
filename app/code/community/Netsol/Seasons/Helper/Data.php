@@ -14,7 +14,7 @@
  *
  * @category    Netsol
  * @package     Netsol_Seasons
- * @copyright   Copyright (c) 2015 Netsolutions India (http://www.netsolutions.in)
+ * @copyright   Copyright (c) 2016 Netsolutions India (http://www.netsolutions.in)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
@@ -58,6 +58,7 @@ class Netsol_Seasons_Helper_Data extends Mage_Core_Helper_Abstract
 	 * @var  string 
 	 */
     const XML_PATH_SEASON_SLIDER_ENABLED = 'pa_seasonssetting/pa_seasons/season_slider_enabled';
+    
    	 /**
 	 * enable/disable 
 	 *

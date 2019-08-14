@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Netsol_Seasons>
+      <active>true</active>
+      <codePool>community</codePool>
+      <version>0.1.1</version>
+      <comment>Before disable/uninstall this module also delete attribute seasons otherwise the website will display error.</comment>
+    </Netsol_Seasons>
+  </modules>
+</config>

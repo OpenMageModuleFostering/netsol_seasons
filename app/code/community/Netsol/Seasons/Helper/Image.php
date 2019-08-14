@@ -19,6 +19,11 @@
  */
 class Netsol_Seasons_Helper_Image extends Varien_Data_Form_Element_Image
 {
+	 /**
+	 * @description: url of seasons banner
+	 * 
+	 * @return  $url
+	 * */
 	protected function _getUrl(){
 			$url = false;
 			if ($this->getValue()) {

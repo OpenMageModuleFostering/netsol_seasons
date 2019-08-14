@@ -49,10 +49,7 @@ class Netsol_Seasons_Block_Adminhtml_Paseason_Edit extends Mage_Adminhtml_Block_
 		{
 				if( Mage::registry("paseason_data") && Mage::registry("paseason_data")->getId() ){
 					
-					return Mage::helper("predictiveanalytics")->__("Update Season Information");
-
-				   //return Mage::helper("predictiveanalytics")->__("Update Season Information '%s'", $this->htmlEscape(Mage::registry("paseason_data")->getId()));
-
+					return Mage::helper("seasons")->__("Update Season Information");
 				} 
 				else{
 
